@@ -1,17 +1,11 @@
 package com.example.model;
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.Objects;
 
 @Entity
 @Table(name = "contact") // название таблицы в базе данных
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +28,6 @@ public class Contact {
 
     }
 
-    // Конструктор без ID (для добавления)
     public Contact(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -93,8 +86,7 @@ public class Contact {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Contact)) return false;
-        Contact contact = (Contact) o;
+        if (!(o instanceof Contact contact)) return false;
         return Objects.equals(id, contact.id);
     }
 
